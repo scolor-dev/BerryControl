@@ -1,0 +1,114 @@
+name: "[JP-F] パフォーマンス問題"
+description: "[JP-F] パフォーマンス低下・速度問題報告用フォーム"
+title: "[Performance] "
+labels: ["performance"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        パフォーマンスに関する問題（遅い・重い・メモリ消費が多いなど）を報告してください。
+        可能な限り計測結果や再現条件を記載してください。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 問題の概要
+      description: どのようなパフォーマンス問題が発生していますか？
+      placeholder: |
+        例:
+        - APIレスポンスが平均3秒以上かかる
+        - 初回ロードが極端に遅い
+        - メモリ使用量が増え続ける
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: 期待されるパフォーマンス
+      description: 本来どの程度であるべきですか？
+      placeholder: |
+        例:
+        - レスポンスは500ms以内が望ましい
+        - 初回ロードは2秒以内
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: measurements
+    attributes:
+      label: 計測データ
+      description: ベンチマーク結果や計測値を記載してください。
+      placeholder: |
+        例:
+        - 平均応答時間: 3200ms
+        - CPU使用率: 95%
+        - メモリ使用量: 1.2GB
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: 再現手順
+      description: どのような操作で発生しますか？
+      placeholder: |
+        例:
+        1. 大量データを登録
+        2. 一覧画面を開く
+        3. 処理が数秒停止
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: OS、バージョン、実行環境など
+      placeholder: |
+        - OS: Windows 11
+        - App Version: 1.2.0
+        - Runtime: Node 20.x / Rust 1.76
+        - Hardware: Ryzen 5 / 16GB RAM
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: suspected_area
+    attributes:
+      label: 想定される原因箇所（推測）
+      options:
+        - label: Frontend描画処理
+        - label: Backend処理
+        - label: データベースクエリ
+        - label: ネットワーク
+        - label: メモリリーク
+        - label: 不明
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 重要度
+      options:
+        - Critical / 致命的（サービス利用困難）
+        - High / 高（体感的に大きな影響）
+        - Medium / 中（特定条件で遅い）
+        - Low / 低（軽微な遅延）
+      default: 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 確認事項
+      options:
+        - label: 既存のIssueを確認しました。
+          required: true

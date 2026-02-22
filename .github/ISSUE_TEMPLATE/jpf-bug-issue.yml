@@ -1,0 +1,116 @@
+name: "[JP-F] バグレポート"
+description: "[JP-F] バグ報告用の日本語フォーム"
+title: "[Bug] "
+labels: ["bug"]
+# projects: ["octo-org/1", "octo-org/44"] # ← 自分のProjectに合わせて変更（不要なら削除）
+# assignees:
+#   - octocat # ← 自動アサインしたいユーザー名に変更（不要なら削除）
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        バグレポートの記入フォームです。
+
+  - type: textarea
+    id: description
+    attributes:
+      label: 概要
+      description: 問題は何ですか？
+      placeholder: 問題の内容を具体的かつ簡潔に記載してください。
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: 再現手順
+      description: どうすれば再現できますか？
+      placeholder: |
+        1. ... を開く
+        2. ... をクリック
+        3. エラーが発生
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: 環境
+      description: OS、アプリのバージョン、実行環境など
+      placeholder: |
+        - OS: (e.g. Windows 11 / macOS 14 / Ubuntu 24.04)
+        - App Version: (e.g. 1.2.3)
+        - Runtime: (e.g. Node 20.x / Rust 1.76 / Python 3.12)
+        - Browser (if applicable): (e.g. Chrome 122)
+        
+        - OS: Windows 11
+        - App Version: 0.3.0
+        - Runtime: Node 20.x
+        - Browser: Firefox 123
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: 原因の仮説
+      description: なぜこの問題が発生していると考えますか？原因の推測があれば記載してください。
+      placeholder: |
+        例:
+        - バリデーションが通っていない可能性
+        - 非同期処理の競合（race condition）
+        - 環境変数の読み込み漏れ
+        - DBマイグレーション未適用
+        - 型変換エラー
+      render: markdown
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: 重要度
+      description: どの程度重要ですか？
+      options:
+        - Critical / 致命的（進行不能・データ破損など）
+        - High / 高（主要機能に影響）
+        - Medium / 中（回避策あり）
+        - Low / 低（軽微）
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: 関連ログ
+      description: ログやエラーメッセージを貼ってください（バッククォート不要）
+      placeholder: ここにログを貼り付け
+      render: shell
+    validations:
+      required: false
+
+    validations:
+      required: false
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: スクリーンショット
+      description: 可能ならスクショや録画を添付してください
+      placeholder: 作成後にファイルを添付し、ここに補足を書いてください。
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 確認事項
+      description: 以下を確認してください。
+      options:
+        - label: 既存のIssueを確認しました。
+          required: true
+        - label: この問題は再現できます。
+          required: false

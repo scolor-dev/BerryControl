@@ -1,0 +1,103 @@
+name: "[JP-F] リファクタ / 技術改善"
+description: "[JP-F] 外部仕様を変更しないコード整理・構造改善用フォーム"
+title: "[Refactor] "
+labels: ["refactor"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        外部仕様を変更しない前提でのコード整理・構造改善を提案してください。
+        ※ 振る舞い変更を伴う場合は Feature / Enhancement を使用してください。
+
+  - type: textarea
+    id: target
+    attributes:
+      label: 対象箇所
+      description: どのファイル・モジュール・機能が対象ですか？
+      placeholder: |
+        例:
+        - src/api/user.rs
+        - frontend/components/LoginForm.tsx
+        - 認証ロジック周辺
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: current_problem
+    attributes:
+      label: 現状の問題点
+      description: なぜ改善が必要ですか？
+      placeholder: |
+        例:
+        - 可読性が低い
+        - 重複コードが多い
+        - 責務が分離されていない
+        - テストしづらい構造になっている
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: improvement_plan
+    attributes:
+      label: 改善方針
+      description: どのように改善する予定ですか？
+      placeholder: |
+        例:
+        - 関数を分割して責務を明確化する
+        - 共通処理をユーティリティへ抽出する
+        - 型設計を見直す
+      render: markdown
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: goals
+    attributes:
+      label: 目的
+      options:
+        - label: 可読性向上
+        - label: 保守性向上
+        - label: パフォーマンス改善
+        - label: セキュリティ強化
+        - label: テスト容易性向上
+        - label: 技術的負債解消
+      required: false
+
+  - type: checkboxes
+    id: affected_area
+    attributes:
+      label: 影響範囲
+      options:
+        - label: Frontend
+        - label: Backend
+        - label: Database
+        - label: Infrastructure
+        - label: CI / Build
+        - label: Documentation
+      required: false
+
+  - type: textarea
+    id: risk
+    attributes:
+      label: リスク・注意点
+      description: 副作用や影響が出る可能性はありますか？
+      placeholder: |
+        例:
+        - テストケースの更新が必要
+        - APIレスポンスの内部構造に変更が出る可能性
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 確認事項
+      options:
+        - label: 外部仕様（API仕様・UI挙動）は変更しません。
+          required: true
+        - label: 既存のIssueを確認しました。
+          required: true

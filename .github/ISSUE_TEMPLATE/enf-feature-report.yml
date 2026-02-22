@@ -1,0 +1,98 @@
+name: "[EN-F] Feature Request"
+description: "[EN-F] English form for new features and improvement proposals"
+title: "[Feature] "
+labels: ["enhancement"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please describe your proposed feature or improvement.
+
+  - type: textarea
+    id: background
+    attributes:
+      label: Background / Problem to Solve
+      description: What problem are you facing? Why is this feature needed?
+      placeholder: |
+        Example:
+        - Currently, ○○ must be done manually
+        - The API lacks a △△ endpoint
+        - The UI is not intuitive
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed Solution
+      description: What feature or improvement are you proposing?
+      placeholder: |
+        Example:
+        - Add a new API endpoint
+        - Add a toggle option in the settings page
+        - Add a --dry-run option to the CLI
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives Considered
+      description: Are there any alternative approaches?
+      placeholder: |
+        Example:
+        - Provide it as a separate module
+        - Extend an existing feature instead
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: affected_area
+    attributes:
+      label: Affected Areas (Expected)
+      options:
+        - label: Frontend
+        - label: Backend
+        - label: Database
+        - label: Infrastructure
+        - label: Documentation
+        - label: CI / Build
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority (From Proposer's Perspective)
+      description: How urgent do you think this feature is?
+      options:
+        - High (Needed soon)
+        - Medium (Nice to have)
+        - Low (Future consideration)
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional_context
+    attributes:
+      label: Additional Context
+      description: Related issues, links, or any other context
+      placeholder: |
+        Example:
+        - Related to #123
+        - Reference URL
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have checked existing issues.
+          required: true

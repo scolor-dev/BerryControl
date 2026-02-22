@@ -1,0 +1,115 @@
+name: "[EN-F] Bug Report"
+description: "[EN-F] English bug report form"
+title: "[Bug] "
+labels: ["bug"]
+# projects: ["octo-org/1", "octo-org/44"] # ← Adjust to your project (remove if unnecessary)
+# assignees:
+#   - octocat # ← Set default assignee if needed (remove if unnecessary)
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        This is a bug report form.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What is the problem?
+      placeholder: Describe the issue clearly and concisely.
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps_to_reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can this issue be reproduced?
+      placeholder: |
+        1. Open ...
+        2. Click ...
+        3. An error occurs
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, app version, runtime, etc.
+      placeholder: |
+        - OS: (e.g. Windows 11 / macOS 14 / Ubuntu 24.04)
+        - App Version: (e.g. 1.2.3)
+        - Runtime: (e.g. Node 20.x / Rust 1.76 / Python 3.12)
+        - Browser (if applicable): (e.g. Chrome 122)
+
+        Example:
+        - OS: Windows 11
+        - App Version: 0.3.0
+        - Runtime: Node 20.x
+        - Browser: Firefox 123
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: hypothesis
+    attributes:
+      label: Hypothesis (Possible Cause)
+      description: Why do you think this issue is happening? Provide any assumptions or possible causes.
+      placeholder: |
+        Example:
+        - Validation might not be applied correctly
+        - Possible race condition in async processing
+        - Missing environment variable
+        - Database migration not applied
+        - Type conversion error
+      render: markdown
+    validations:
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      description: How critical is this issue?
+      options:
+        - Critical (Blocking / Data corruption)
+        - High (Major feature impacted)
+        - Medium (Workaround available)
+        - Low (Minor issue)
+      default: 2
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Related Logs
+      description: Paste relevant logs or error messages (no backticks needed)
+      placeholder: Paste logs here
+      render: shell
+    validations:
+      required: false
+
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Screenshots
+      description: Attach screenshots or recordings if possible.
+      placeholder: Attach files after creating the issue and add notes here if needed.
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      description: Please confirm the following:
+      options:
+        - label: I have checked existing issues.
+          required: true
+        - label: I can reproduce this issue.
+          required: false

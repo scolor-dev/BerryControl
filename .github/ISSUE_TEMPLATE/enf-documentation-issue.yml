@@ -1,0 +1,85 @@
+name: "[EN-F] Documentation Improvement"
+description: "[EN-F] Report documentation errors, missing information, or improvement suggestions"
+title: "[Docs] "
+labels: ["documentation"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report issues or suggest improvements for README, API docs, comments, Wiki, or other documentation.
+
+  - type: textarea
+    id: location
+    attributes:
+      label: Location
+      description: Which document and section are affected?
+      placeholder: |
+        Example:
+        - README.md – Installation section
+        - docs/api.md – Authentication part
+        - Source code comments in user.rs
+      render: markdown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: Type
+      options:
+        - Typo / Minor correction
+        - Missing information
+        - Unclear explanation
+        - Outdated information
+        - Proposal for new documentation
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is incorrect or unclear?
+      placeholder: |
+        Example:
+        - The steps do not match the actual behavior
+        - The command is outdated
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested Improvement
+      description: How should it be improved?
+      placeholder: |
+        Example:
+        - Update the command to the latest version
+        - Add a diagram
+        - Provide sample code
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: affected_area
+    attributes:
+      label: Related Area
+      options:
+        - label: README
+        - label: API documentation
+        - label: Tutorial
+        - label: Code comments
+        - label: Wiki
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have checked existing issues.
+          required: true

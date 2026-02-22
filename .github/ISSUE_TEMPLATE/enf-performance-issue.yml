@@ -1,0 +1,114 @@
+name: "[EN-F] Performance Issue"
+description: "[EN-F] Report performance degradation or speed-related issues"
+title: "[Performance] "
+labels: ["performance"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Report performance-related issues (slow response, high memory usage, CPU spikes, etc.).
+        Please include measurements and reproduction details whenever possible.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What performance problem are you experiencing?
+      placeholder: |
+        Example:
+        - API response time exceeds 3 seconds
+        - Initial page load is extremely slow
+        - Memory usage keeps increasing
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected_behavior
+    attributes:
+      label: Expected Performance
+      description: What performance level is expected?
+      placeholder: |
+        Example:
+        - Response time should be under 500ms
+        - Initial load should be within 2 seconds
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: measurements
+    attributes:
+      label: Measurements / Benchmark Data
+      description: Provide benchmark results or measured values.
+      placeholder: |
+        Example:
+        - Average response time: 3200ms
+        - CPU usage: 95%
+        - Memory usage: 1.2GB
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: reproduction_steps
+    attributes:
+      label: Steps to Reproduce
+      description: How can this issue be reproduced?
+      placeholder: |
+        Example:
+        1. Insert large dataset
+        2. Open list page
+        3. Application freezes for several seconds
+      render: markdown
+    validations:
+      required: false
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: OS, app version, runtime, hardware, etc.
+      placeholder: |
+        - OS: Windows 11
+        - App Version: 1.2.0
+        - Runtime: Node 20.x / Rust 1.76
+        - Hardware: Ryzen 5 / 16GB RAM
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: suspected_area
+    attributes:
+      label: Suspected Area (Optional)
+      options:
+        - label: Frontend rendering
+        - label: Backend processing
+        - label: Database queries
+        - label: Network
+        - label: Memory leak
+        - label: Unknown
+      required: false
+
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Severity
+      options:
+        - Critical (Service unusable)
+        - High (Major user impact)
+        - Medium (Slow under certain conditions)
+        - Low (Minor delay)
+      default: 2
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: Confirmations
+      options:
+        - label: I have checked existing issues.
+          required: true

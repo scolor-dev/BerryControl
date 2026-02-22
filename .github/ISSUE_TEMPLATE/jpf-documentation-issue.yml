@@ -1,0 +1,85 @@
+name: "[JP-F] ドキュメント改善"
+description: "[JP-F] ドキュメントの誤記・不足・改善提案用フォーム"
+title: "[Docs] "
+labels: ["documentation"]
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        README・API仕様・コメント・Wikiなどのドキュメントに関する問題や改善提案を記入してください。
+
+  - type: textarea
+    id: location
+    attributes:
+      label: 対象箇所
+      description: どのドキュメントのどの部分ですか？
+      placeholder: |
+        例:
+        - README.md の「インストール方法」セクション
+        - docs/api.md の認証部分
+        - コメントの説明不足
+      render: markdown
+    validations:
+      required: true
+
+  - type: dropdown
+    id: issue_type
+    attributes:
+      label: 種類
+      options:
+        - 誤記・タイポ修正
+        - 内容の不足
+        - 説明が分かりにくい
+        - 情報が古い
+        - 新規ドキュメント追加提案
+      default: 1
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: 問題点
+      description: 何が問題ですか？
+      placeholder: |
+        例:
+        - 手順が実際の挙動と異なる
+        - 記載されているコマンドが古い
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 改善案
+      description: どのように修正・改善すべきですか？
+      placeholder: |
+        例:
+        - コマンドを最新のものに更新する
+        - 図を追加する
+        - サンプルコードを追加する
+      render: markdown
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: affected_area
+    attributes:
+      label: 関連領域
+      options:
+        - label: README
+        - label: API仕様
+        - label: チュートリアル
+        - label: コメント
+        - label: Wiki
+      required: false
+
+  - type: checkboxes
+    id: confirmations
+    attributes:
+      label: 確認事項
+      options:
+        - label: 既存のIssueを確認しました。
+          required: true
