@@ -74,6 +74,7 @@ body:
         - label: Tutorial
         - label: Code comments
         - label: Wiki
+    validations:
       required: false
 
   - type: checkboxes

@@ -61,6 +61,7 @@ body:
         - label: Infrastructure
         - label: Documentation
         - label: CI / Build
+    validations:
       required: false
 
   - type: dropdown
