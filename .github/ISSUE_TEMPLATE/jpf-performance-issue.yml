@@ -90,6 +90,7 @@ body:
         - label: ネットワーク
         - label: メモリリーク
         - label: 不明
+    validations:
       required: false
 
   - type: dropdown

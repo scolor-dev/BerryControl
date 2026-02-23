@@ -90,6 +90,7 @@ body:
         - label: Network
         - label: Memory leak
         - label: Unknown
+    validations:
       required: false
 
   - type: dropdown

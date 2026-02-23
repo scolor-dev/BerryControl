@@ -64,6 +64,7 @@ body:
         - label: Strengthen security
         - label: Improve testability
         - label: Reduce technical debt
+    validations:
       required: false
 
   - type: checkboxes
@@ -77,6 +78,7 @@ body:
         - label: Infrastructure
         - label: CI / Build
         - label: Documentation
+    validations:
       required: false
 
   - type: textarea

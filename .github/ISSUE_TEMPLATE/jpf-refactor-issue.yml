@@ -64,6 +64,7 @@ body:
         - label: セキュリティ強化
         - label: テスト容易性向上
         - label: 技術的負債解消
+    validations:
       required: false
 
   - type: checkboxes
@@ -77,6 +78,7 @@ body:
         - label: Infrastructure
         - label: CI / Build
         - label: Documentation
+    validations:
       required: false
 
   - type: textarea

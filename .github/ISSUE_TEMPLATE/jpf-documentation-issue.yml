@@ -74,6 +74,7 @@ body:
         - label: チュートリアル
         - label: コメント
         - label: Wiki
+    validations:
       required: false
 
   - type: checkboxes
