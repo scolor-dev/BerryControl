@@ -1,35 +1,61 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { useEffect, useState } from "react";
+import { invoke } from "@tauri-apps/api/core";
 
-function App() {
-  const [count, setCount] = useState(0)
+type TestConnectionResponse = {
+  ok: boolean;
+  message: string;
+};
+
+type TestConnectionRequest = {
+  host: string;
+  username: string;
+  port?: number;
+  private_key_path?: string;
+  accept_new_host_key?: boolean;
+  timeout_secs?: number;
+};
+
+export default function App() {
+  const [result, setResult] = useState<TestConnectionResponse | null>(null);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    (async () => {
+      try {
+        const payload: TestConnectionRequest = {
+          host: "192.168.1.21",
+          username: "user-admin",
+          port: 22,
+          accept_new_host_key: true,
+          timeout_secs: 10,
+
+          // 既定鍵で入れるなら不要（sshが ~/.ssh/config や既定鍵を使う）
+          // 鍵を明示したいなら入れる：
+          private_key_path: "C:\\Users\\sorai\\.ssh\\id_ed25519_server",
+        };
+
+        const res = await invoke<TestConnectionResponse>("test_connection", { payload });
+        if (!cancelled) setResult(res);
+      } catch (e) {
+        if (!cancelled) setError(String(e));
+      }
+    })();
+
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div style={{ padding: 16, fontFamily: "sans-serif" }}>
+      <h1>Connection Test</h1>
 
-export default App
+      {error && <pre style={{ whiteSpace: "pre-wrap" }}>Error: {error}</pre>}
+      {!error && !result && <p>Testing...</p>}
+      {result && <pre style={{ whiteSpace: "pre-wrap" }}>{JSON.stringify(result, null, 2)}</pre>}
+    </div>
+  );
+}
